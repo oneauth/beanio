@@ -235,7 +235,7 @@ public class Field extends ParserComponent implements Property {
             }
         }
         
-        format.insertField(context, text);
+        format.insertField(context, text, context.getEncoding());
         return true;
     }
     

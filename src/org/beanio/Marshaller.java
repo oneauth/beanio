@@ -55,7 +55,7 @@ public interface Marshaller extends Debuggable {
      * @throws InvalidBeanException if BeanIO is configured to validate fields during marshalling,
      *   and a field does not meet the configured validation rules
      */
-    public Marshaller marshal(Object bean) throws BeanWriterException;
+    public Marshaller marshal(Object bean, String encoding) throws BeanWriterException;
     
     /**
      * Marshals a single bean object.
@@ -67,7 +67,7 @@ public interface Marshaller extends Debuggable {
      * @throws InvalidBeanException if BeanIO is configured to validate fields during marshalling,
      *   and a field does not meet the configured validation rules
      */
-    public Marshaller marshal(String recordName, Object bean) throws BeanWriterException;
+    public Marshaller marshal(String recordName, Object bean, String encoding) throws BeanWriterException;
 
     /**
      * Returns the most recent marshalled bean object as a <code>String</code>.  This method

@@ -17,6 +17,9 @@ package org.beanio.internal.parser.format.fixedlength;
 
 import org.beanio.internal.parser.UnmarshallingContext;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 /**
  * The {@link UnmarshallingContext} implementation for a fixed length formatted stream.
  * 
@@ -31,7 +34,14 @@ public class FixedLengthUnmarshallingContext extends UnmarshallingContext {
     @Override
     public void setRecordValue(Object value) {
         this.record = (String) value;
-        this.recordLength = value == null ? 0 : record.length();
+        int reccordBytesLen = 0;
+        try {
+            reccordBytesLen = record.getBytes(getEncoding()).length;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        this.recordLength = value == null ? 0 : reccordBytesLen ;
+
     }
     
     /**
@@ -72,14 +82,16 @@ public class FixedLengthUnmarshallingContext extends UnmarshallingContext {
             }
         }
         
-        String text;
-        if (length < 0) {
-            text = record.substring(position, max);
+        String text = null;
+        try {
+            byte[] src = record.getBytes(getEncoding());
+            byte[] tmp = new byte[length];
+            System.arraycopy(src, position, tmp, 0, length);
+            text = new String(tmp, 0, length, getEncoding());
+            setFieldText(name, text);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
-        else {
-            text = record.substring(position, Math.min(max, position + length));
-        }
-        setFieldText(name, text);
         return text;
     }
 }

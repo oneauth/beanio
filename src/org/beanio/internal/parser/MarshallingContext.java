@@ -33,6 +33,7 @@ import org.w3c.dom.Document;
  */
 public abstract class MarshallingContext extends ParsingContext {
 
+    private String encoding;
     private Object bean;
     private String componentName;
     private RecordWriter recordWriter;
@@ -57,6 +58,7 @@ public abstract class MarshallingContext extends ParsingContext {
      * @throws IOException if an I/O error occurs
      */
     public void writeRecord() throws IOException {
+        Object o = getRecordObject();
         recordWriter.write(getRecordObject());
         super.clear();
     }
@@ -142,5 +144,13 @@ public abstract class MarshallingContext extends ParsingContext {
      */
     public void setRecordWriter(RecordWriter recordWriter) {
         this.recordWriter = recordWriter;
+    }
+
+    public String getEncoding() {
+        return encoding;
+    }
+
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
     }
 }

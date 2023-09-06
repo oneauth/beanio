@@ -50,11 +50,11 @@ public abstract class FlatFieldFormatSupport implements FlatFieldFormat {
      * @param text the field text to insert into the record
      */
     @Override
-    public void insertField(MarshallingContext context, String text) {
+    public void insertField(MarshallingContext context, String text, String encoding) {
         boolean commit = text != null || !isLazy();
         
         if (padding != null) {
-            text = padding.pad(text);
+            text = padding.pad(text, encoding);
         }
         else if (text == null) {
             text = "";

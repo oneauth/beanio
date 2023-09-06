@@ -1,6 +1,9 @@
 # &nbsp;<img src="https://raw.githubusercontent.com/beanio/beanio.github.io/main/static/img/logo.svg" height="25"/> BeanIO ![](https://img.shields.io/maven-central/v/com.github.beanio/beanio) [![Java CI](https://github.com/beanio/beanio/actions/workflows/gradle.yml/badge.svg)](https://github.com/beanio/beanio/actions/workflows/gradle.yml) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=beanio&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=beanio) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=beanio&metric=security_rating)](https://sonarcloud.io/dashboard?id=beanio) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=beanio&metric=coverage)](https://sonarcloud.io/dashboard?id=beanio)
 
-A Java library for marshalling and unmarshalling bean objects from XML, CSV, delimited and fixed length stream formats.
+### EDI(고정길이,가변길이)  전문 변환 JSON to EDI and EDI to JSON 
+- JSON format stream to EDI(fixed-length) format byte stream converting
+- byte length process and encoding supported korean language (2byte,3byte)
+- A Java library for marshalling and unmarshalling bean objects from XML, CSV, delimited and fixed length stream formats.
 
 ## Installation
 

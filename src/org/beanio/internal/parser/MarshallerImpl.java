@@ -64,8 +64,8 @@ public class MarshallerImpl implements Marshaller {
      * @see org.beanio.Marshaller#marshal(java.lang.Object)
      */
     @Override
-    public Marshaller marshal(Object bean) throws BeanWriterException {
-        return marshal(null, bean);
+    public Marshaller marshal(Object bean,String encoding) throws BeanWriterException {
+        return marshal(null, bean, encoding);
     }
     
     /*
@@ -73,7 +73,7 @@ public class MarshallerImpl implements Marshaller {
      * @see org.beanio.Marshaller#marshal(java.lang.String, java.lang.Object)
      */
     @Override
-    public Marshaller marshal(String recordName, Object bean) throws BeanWriterException {
+    public Marshaller marshal(String recordName, Object bean,String encoding) throws BeanWriterException {
         recordValue = null;
         
         if (recordName == null && bean == null) {
@@ -86,6 +86,8 @@ public class MarshallerImpl implements Marshaller {
             context.setComponentName(recordName);
             // set the bean to be marshalled on the context
             context.setBean(bean);
+
+            context.setEncoding(encoding);
             
             // find the parser in the layout that defines the given bean
             Selector matched = layout.matchNext(context);

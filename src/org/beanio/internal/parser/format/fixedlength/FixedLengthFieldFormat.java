@@ -19,6 +19,8 @@ import org.beanio.internal.parser.*;
 import org.beanio.internal.parser.format.FieldPadding;
 import org.beanio.internal.parser.format.flat.FlatFieldFormatSupport;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * A {@link FieldFormat} implementation for a field in a fixed length formatted stream.
  * 
@@ -38,7 +40,15 @@ public class FixedLengthFieldFormat extends FlatFieldFormatSupport implements Fi
         }
         
         FieldPadding padding = getPadding();
-        if (padding.getLength() >= 0 && text.length() != padding.getLength() && !lenientPadding) {
+
+        int len = 0;
+        try {
+            len = text.getBytes(context.getEncoding()).length;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        if (padding.getLength() >= 0 && len != padding.getLength() && !lenientPadding) {
             if (reportErrors) {
                 context.addFieldError(getName(), text, "length", padding.getLength());
             }

@@ -80,7 +80,7 @@ public class UnmarshallerImpl implements Unmarshaller {
      * @see org.beanio.Unmarshaller#unmarshal(java.lang.String)
      */
     @Override
-    public Object unmarshal(String text) throws MalformedRecordException, UnidentifiedRecordException,
+    public Object unmarshal(String text, String encoding) throws MalformedRecordException, UnidentifiedRecordException,
         UnexpectedRecordException, InvalidRecordException {
         
         if (text == null) {
@@ -89,6 +89,7 @@ public class UnmarshallerImpl implements Unmarshaller {
         
         this.recordName = null;
         this.recordText = text;
+        this.context.setEncoding(encoding);
         
         return unmarshal();
     }

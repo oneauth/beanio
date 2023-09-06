@@ -47,14 +47,17 @@ public abstract class NumberTypeHandler extends LocaleSupport implements Configu
      */
     @Override
     public final Number parse(String text) throws TypeConversionException {
+
+        text = text.trim() == "" ? "0" : text;	// if Spaces
         if (text == null || "".equals(text)) {
-            return null;
+//            return null;
+            text = "0";
         }
 
         if (pattern == null) {
             
             try {
-                return createNumber(text);
+                return createNumber(text); // add trim 2023.06.08 for NIC - trim revoke
             }
             catch (NumberFormatException ex) {
                 throw new TypeConversionException("Invalid " + getType().getSimpleName() +
@@ -152,12 +155,16 @@ public abstract class NumberTypeHandler extends LocaleSupport implements Configu
     public String format(Object value) {
         if (value == null)
             return null;
-        else if (pattern == null)
-            return ((Number) value).toString();
-        else if (format != null) 
+        else if (pattern == null) {
+//            return ((Number) value).toString();
+            String val = String.valueOf(value).trim();  // 2023.05.17
+            val = (val == "") ? "0" : val;    // if Spaces
+            return val;
+        }else if (format != null)
             return format.get().format(value);
         else
-            return createDecimalFormat().format(value);
+        	return String.valueOf(value);  // add trim 2023.06.08 for NIC  trim revoke
+//            return createDecimalFormat().format(value);  //  pass format check 2023.05.17 for TAD
     }
 
     /**

@@ -84,7 +84,6 @@ public class FixedLengthMarshallingContext extends MarshallingContext {
         int offset = -1;
         
         for (Entry entry : committedEntries) {
-            
             int index = entry.position;
             if (index < 0) {
                 // the offset is calculated the first time we encounter
@@ -103,10 +102,10 @@ public class FixedLengthMarshallingContext extends MarshallingContext {
                 size = record.length();
             }
             else {
-                while (index > size) {
-                    record.append(filler);
-                    ++size;
-                }
+//                while (index > size) {
+//                    record.append(filler);
+//                    ++size;
+//                }
                 
                 record.append(entry.text);
                 size += entry.text.length();

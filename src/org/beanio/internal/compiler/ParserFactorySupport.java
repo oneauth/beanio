@@ -1560,7 +1560,7 @@ public abstract class ParserFactorySupport extends ProcessorSupport implements P
         Class<?> beanClass = null;
         if (config.getType() != null) {
             if ("map".equals(config.getType())) {
-                beanClass = HashMap.class;
+                beanClass = LinkedHashMap.class;
             }
             else if ("list".equals(config.getType()) || "collection".equals(config.getType())) {
                 beanClass = ArrayList.class;

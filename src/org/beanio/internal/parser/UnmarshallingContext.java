@@ -36,6 +36,7 @@ import org.w3c.dom.Node;
  */
 public abstract class UnmarshallingContext extends ParsingContext {
 
+    private String encoding;
     private Locale locale;
     private MessageFactory messageFactory;
     private RecordReader recordReader;
@@ -501,5 +502,13 @@ public abstract class UnmarshallingContext extends ParsingContext {
      */
     public void setLocale(Locale locale) {
         this.locale = locale;
+    }
+
+    public String getEncoding() {
+        return encoding;
+    }
+
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
     }
 }

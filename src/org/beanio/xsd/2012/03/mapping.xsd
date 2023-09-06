@@ -120,6 +120,13 @@
         </element>
       </choice>
     </sequence>
+    <attribute name="kor" type="xsd:string" use="optional">
+      <annotation>
+        <documentation>
+          The name of the stream.
+        </documentation>
+      </annotation>
+    </attribute>
     <attribute name="name" type="xsd:string" use="required">
       <annotation>
         <documentation>
@@ -694,6 +701,14 @@
   </complexType>
   
   <complexType name="Field">
+    <attribute name="kor" type="xsd:string" use="optional">
+      <annotation>
+        <documentation>
+          The name of the field, and by default, the
+          name of the bean property the field maps to.
+        </documentation>
+      </annotation>
+    </attribute>
     <attribute name="name" type="xsd:string" use="required">
       <annotation>
         <documentation>
@@ -1014,6 +1029,13 @@
         </annotation>
       </element>
     </choice>
+    <attribute name="kor" type="xsd:string" use="required">
+      <annotation>
+        <documentation>
+          The segment korean name.
+        </documentation>
+      </annotation>
+    </attribute>
     <attribute name="name" type="xsd:string" use="required">
       <annotation>
         <documentation>

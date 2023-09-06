@@ -45,7 +45,7 @@ public abstract class XmlFieldFormat implements FieldFormat, XmlNode {
      * @see org.beanio.internal.parser.FieldFormat#insertField(org.beanio.internal.parser.MarshallingContext, java.lang.String)
      */
     @Override
-    public void insertField(MarshallingContext context, String fieldText) {
+    public void insertField(MarshallingContext context, String fieldText, String encoding) {
         XmlMarshallingContext ctx = (XmlMarshallingContext) context;
         
         if (padding != null && fieldText != null) {

@@ -53,7 +53,7 @@ public interface Unmarshaller extends Debuggable {
      * @throws UnexpectedRecordException if the record is out of sequence
      * @throws InvalidRecordException if the record fails validation
      */
-    public Object unmarshal(String record) throws BeanReaderException, MalformedRecordException,
+    public Object unmarshal(String record, String encoding) throws BeanReaderException, MalformedRecordException,
         UnidentifiedRecordException, UnexpectedRecordException, InvalidRecordException;
     
     /**

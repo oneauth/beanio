@@ -42,12 +42,12 @@ public interface FieldFormat {
 
     /**
      * Inserts a value into a record.  This method is called before type conversion.
-     * If the method returns false, type conversion is invoked and {@link #insertField(MarshallingContext, String)}
-     * is called.  If the method returns true, {@link #insertField(MarshallingContext, String)}
+     * If the method returns false, type conversion is invoked and {@link #insertField(MarshallingContext, String, String)}
+     * is called.  If the method returns true, {@link #insertField(MarshallingContext, String, String)}
      * is not invoked.
      * @param context the {@link MarshallingContext}
      * @param value the value to insert into the record
-     * @return true if type conversion is required and {@link #insertField(MarshallingContext, String)}
+     * @return true if type conversion is required and {@link #insertField(MarshallingContext, String, String)}
      *   must be invoked, false otherwise
      */
     public boolean insertValue(MarshallingContext context, Object value);
@@ -57,7 +57,7 @@ public interface FieldFormat {
      * @param context the {@link MarshallingContext} holding the record
      * @param text the field text to insert into the record
      */
-    public void insertField(MarshallingContext context, String text);
+    public void insertField(MarshallingContext context, String text, String encoding);
     
     /**
      * Returns the size of the field.  Fixed length formats should return the 

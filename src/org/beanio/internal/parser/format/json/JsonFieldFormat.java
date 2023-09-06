@@ -159,7 +159,7 @@ public class JsonFieldFormat implements FieldFormat, JsonNode {
      * @see org.beanio.internal.parser.FieldFormat#insertField(org.beanio.internal.parser.MarshallingContext, java.lang.String)
      */
     @Override
-    public void insertField(MarshallingContext context, String text) {
+    public void insertField(MarshallingContext context, String text, String encoding) {
         
         JsonMarshallingContext ctx = (JsonMarshallingContext) context;
 
